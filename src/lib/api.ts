@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 
 const api = axios.create({
@@ -7,13 +7,13 @@ const api = axios.create({
 
 api.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem("access")
+        const token: string | null = localStorage.getItem("access")
         if (token) {
             config.headers.Authorization = `Bearer ${token}`
         }
         return config
     },
-    (err) => {
+    (err: AxiosError) => {
         return Promise.reject(err)
     }
 )
