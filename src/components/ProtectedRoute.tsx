@@ -47,12 +47,13 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
     }
 
     
-    if (isAuthorized === null) {
-        return <div>loading...</div>
-    }
     useEffect(() => {
         auth().catch(() => setIsAuthorized(false))
     }, [])
+    
+    if (isAuthorized === null) {
+        return <div>loading...</div>
+    }
 
     return (
         isAuthorized ? children : <Navigate to='/login' />
