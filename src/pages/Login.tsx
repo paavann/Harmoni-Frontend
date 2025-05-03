@@ -8,11 +8,11 @@ import api from '@/lib/api'
 function Login() {
     const navigate = useNavigate()
 
-    const handleLogin = async (e: React.FormEvent, username: string, password: string) => {
+    const handleLogin = async (e: React.FormEvent, email: string, password: string): Promise<void> => {
         e.preventDefault()
 
         try {
-            const res = await api.post('http://localhost:8000/users/token', { username, password })
+            const res = await api.post('users/token/', { email, password })
             localStorage.setItem("access", res.data.access)
             localStorage.setItem("refresh", res.data.refresh)
             navigate('/')
@@ -21,10 +21,11 @@ function Login() {
         }
     }
 
+
     return (
         <div className="flex min-h-svh flex-col items-center justify-center bg-muted p-6 md:p-10">
             <div className="w-full max-w-sm md:max-w-3xl">
-                <LoginForm />
+                <LoginForm onLogin={handleLogin}/>
             </div>
         </div>
     )
