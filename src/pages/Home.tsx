@@ -1,4 +1,5 @@
 import Header from "@/components/Header"
+import Journal from "@/components/Journal"
 
 function Home() {
     return (
@@ -6,7 +7,7 @@ function Home() {
             <div className="w-full h-[5%]">
                 <Header />
             </div>
-            <h1>your home page</h1>
+            <Journal />
         </div>
     )
 }
