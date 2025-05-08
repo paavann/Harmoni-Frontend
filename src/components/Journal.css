@@ -1,0 +1,107 @@
+/* rich-text toolbar */
+.ck.ck-toolbar {
+    background-color: #4e5053;
+    color: #050101;
+    width: 100%;
+    border-color: #4e5053;
+    margin-top: 0%;
+}
+
+.ck.ck-toolbar .ck-button:hover {
+    background-color: #3d3f42;
+    color: rgb(0, 0, 0) !important;
+    height: 30px;
+    cursor: pointer;
+}
+
+.ck.ck-toolbar .ck-button.ck-on {
+    background-color: rgb(40, 43, 46);
+    color: black;
+    height: 30px;
+}
+
+.ck.ck-toolbar .ck-button.ck-on:hover {
+    background-color: rgb(35, 41, 36);
+    border-color: none;
+}
+
+.ck.ck-toolbar .ck-button:active {
+    background-color: #3d3f42 !important;
+}
+
+.ck.ck-toolbar .ck-button .ck-icon {
+    color: white !important;
+    transform: scale(0.75);
+    transform-origin: center;
+}
+
+.ck.ck-toolbar .ck-button {
+    padding: 4px;
+    border-radius: 3px;
+    width: fit-content;
+}
+
+.ck-editor__editable {
+    background-color: rgb(174, 177, 40);
+    color: #000000;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    height: 90%;
+    border: none !important;
+    outline: none !important;
+}
+
+.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+    border: none;
+}
+
+/* journal page */
+.ck.ck-editor__main > .ck-editor__editable {
+    background: linear-gradient(
+        to bottom,
+        #fdf6e3 0%,
+        #f4e2b5 35%,
+        #e6d3a3 65%,
+        #d8c292 100%
+    );
+    margin: 1%;
+    height: 85vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.ck .ck-reset .ck-list {
+    background-color: white;
+    border-radius: 10px;
+    padding: 6px;
+    max-height: 20%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    list-style: none;
+}
+
+.ck .ck-list__item:hover .ck-button_with-text .ck-button {
+    background-color: rgb(212, 211, 211);
+    cursor: pointer;
+}
+.ck-list-item-button:hover {
+    background-color: #000000;
+}
+.ck.ck-button.ck-on.ck-button_with-text.ck-list-item-button.ck-list-item-button_toggleable {
+    background-color: #ada7a7;
+    width: 100%;
+}
+.ck.ck-list-item-button__check-holder.ck-on {
+    color: black;
+}
+.ck.ck-button.ck-off.ck-button_with-text.ck-list-item-button.ck-list-item-button_toggleable {
+    width: 100%;
+}
+.ck.ck-icon.ck-reset_all-excluded.ck-icon_inherit-color.ck-list-item-button__check-icon.ck.ck-icon.ck-icon_inherit-color *:not([fill]) {
+    color: black;
+}

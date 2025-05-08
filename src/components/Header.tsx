@@ -13,7 +13,7 @@ function Header() {
                 <PanelLeftOpen
                     className="hover:cursor-pointer"
                     color='#ffffff'
-                    strokeWidth={1}
+                    strokeWidth={2}
                 />
             </div>
             <div className="text-white font-semibold w-[33.4%] justify-center flex">
@@ -23,7 +23,7 @@ function Header() {
                 <BookPlus
                     className="hover:cursor-pointer"
                     color='#ffffff'
-                    strokeWidth={1}
+                    strokeWidth={2}
                 />
             </div>
         </div>

@@ -118,6 +118,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  a {
+    @apply text-blue-600 underline hover:cursor-pointer;
+  }
 }
 
 
