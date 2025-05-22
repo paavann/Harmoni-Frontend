@@ -63,11 +63,21 @@
         #f4e2b5 35%,
         #e6d3a3 65%,
         #d8c292 100%
+    ),
+    repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.1) 0,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 32px
     );
+    background-blend-mode: overlay;
     margin: 1%;
     height: 85vh;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    line-height: 32px;
 }
 .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
