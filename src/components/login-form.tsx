@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -10,16 +10,40 @@ export function LoginForm({
   onLogin,
   ...props
 }: React.ComponentProps<"div"> & { onLogin?: (e: React.FormEvent, email: string, password: string) => void }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [errMsg, setErrMsg] = useState<string>('')
 
-  const handleSubmit = (e: React.FormEvent): void => {
+  const userRef = useRef<HTMLInputElement>(null)
+  const errRef = useRef<HTMLParagraphElement>(null)
+
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault()
+
     if (onLogin) {
-      onLogin(e, email, password)
+      try {
+        await onLogin(e, email, password)
+      } catch (err) {
+        if (err instanceof Error) {
+          setErrMsg(err.message)
+          console.log("error: ", err.message)
+        } else {
+          setErrMsg('An unknown error occurred. Please try again some time later.')
+        }
+        errRef.current?.focus()
+      }
     }
   }
+
+
+  useEffect(() => {
+    userRef.current?.focus()
+  }, [])
+
+  useEffect(() => {
+    setErrMsg('')
+  }, [email, password])
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -40,6 +64,7 @@ export function LoginForm({
                   type="email"
                   placeholder="Enter your E-Mail"
                   value={email}
+                  ref={userRef}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
@@ -54,14 +79,6 @@ export function LoginForm({
                     Forgot your password?
                   </a>
                 </div>
-                {/* <Input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required 
-                /> */}
                 <div className="relative">
                   <Input
                     id="password"
@@ -114,6 +131,7 @@ export function LoginForm({
               <Button type="submit" className="w-full hover:cursor-pointer">
                 Login
               </Button>
+              {errMsg && <p ref={errRef} className="text-red-500 font-bold self-center text-sm">{errMsg}</p>}
               <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
                 <span className="bg-card text-muted-foreground relative z-10 px-2">
                   Or continue with

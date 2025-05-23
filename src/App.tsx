@@ -1,25 +1,23 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './pages/Login'
 import Home from './pages/Home'
+import Layout from './components/Layout'
 
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path='/'
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
-        <Route path='/login' element={<Login />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route path='login' element={<Login />} />
+
+        {/* Protected Routes   */}
+        <Route element={<ProtectedRoute />}>
+          <Route index element={<Home />} />
+        </Route>
+      </Route>
+    </Routes>
   )
 }
 

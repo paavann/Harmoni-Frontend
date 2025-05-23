@@ -2,7 +2,7 @@ import { apiSlice } from '@/app/api/apiSlice'
 
 
 interface LoginReq {
-    username: string
+    email: string
     password: string
 }
 
@@ -13,12 +13,15 @@ interface LoginRes {
 
 export const authApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
-        login: builder.mutation<LoginReq, LoginRes>({
+        login: builder.mutation<LoginRes, LoginReq>({
             query: credentials => ({
                 url: 'users/token/',
                 method: 'POST',
+                //passing the credentials as the body of request
                 body: { ...credentials }
             })
         }),
     })
 })
+
+export const { useLoginMutation } = authApiSlice

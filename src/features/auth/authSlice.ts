@@ -1,11 +1,12 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
 
 import { RootState } from '@/app/store'
 
 
 
 export interface User {
-    name: string
+    email: string
 }
 
 interface AuthState {
