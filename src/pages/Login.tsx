@@ -42,10 +42,12 @@ function Login() {
 
 
     useEffect(() => {
+        console.log("token we got: ", token)
         if (token) {
             const from = (location.state as { from?: Location })?.from?.pathname || '/'
             navigate(from, { replace: true })
         }
+        console.log("token wasnt available...")
     }, [token, location, navigate])
 
     return (

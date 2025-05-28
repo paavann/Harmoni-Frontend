@@ -181,8 +181,9 @@ export function LoginForm({
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             /> */}
             <div className="h-full w-full flex items-center justify-center">
-              <p className="text-2xl font-bold">
+              <p className="w-full text-2xl font-bold">
                 A Web Journaling App where you can be YOU!
+                a picture will be added here soon
               </p>
             </div>
           </div>
